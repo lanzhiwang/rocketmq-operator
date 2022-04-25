@@ -51,7 +51,7 @@ type BrokerSpec struct {
 	// Volumes define the broker.conf
 	Volumes []corev1.Volume `json:"volumes"`
 	// VolumeClaimTemplates defines the StorageClass
-	Volume          `json:"volume,omitempty"`
+	Volume `json:"volume,omitempty"`
 	// The name of pod where the metadata from
 	ScalePodName string `json:"scalePodName"`
 }

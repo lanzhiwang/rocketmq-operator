@@ -45,7 +45,7 @@ type NameServiceSpec struct {
 	StorageMode string `json:"storageMode"`
 	// HostPath is the local path to store data
 	HostPath string `json:"hostPath,omitempty"`
-	Volume          `json:"volume,omitempty"`
+	Volume   `json:"volume,omitempty"`
 }
 
 // NameServiceStatus defines the observed state of NameService
