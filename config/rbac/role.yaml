@@ -1,0 +1,111 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - brokers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - brokers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - brokers/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - consoles
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - consoles/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - consoles/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - nameservices
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - nameservices/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - nameservices/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - topictransfers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - topictransfers/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - topictransfers/status
+  verbs:
+  - get
+  - patch
+  - update
