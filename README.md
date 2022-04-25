@@ -67,7 +67,11 @@ $ kubebuilder create api
 kustomize v4.5.4
 kubebuilder "3.3.0"
 go install sigs.k8s.io/controller-tools/cmd/controller-gen@v0.8.0
-bin/controller-gen
+go install sigs.k8s.io/controller-runtime/tools/setup-envtest v0.0.0-20220423154536-b1e1a4f79554
+
+./bin/controller-gen
+./bin/kustomize
+./bin/setup-envtest
 
 ##############################################
 $ kubebuilder create api --group rocketmq --version v1alpha1 --kind Broker
