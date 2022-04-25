@@ -1,0 +1,24 @@
+# permissions for end users to edit brokers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: broker-editor-role
+rules:
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - brokers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - brokers/status
+  verbs:
+  - get

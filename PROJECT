@@ -1,0 +1,43 @@
+domain: apache.org
+layout:
+- go.kubebuilder.io/v3
+projectName: rocketmq-operator
+repo: github.com/apache/rocketmq-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: apache.org
+  group: rocketmq
+  kind: Broker
+  path: github.com/apache/rocketmq-operator/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: apache.org
+  group: rocketmq
+  kind: Console
+  path: github.com/apache/rocketmq-operator/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: apache.org
+  group: rocketmq
+  kind: NameService
+  path: github.com/apache/rocketmq-operator/api/v1alpha1
+  version: v1alpha1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: apache.org
+  group: rocketmq
+  kind: TopicTransfer
+  path: github.com/apache/rocketmq-operator/api/v1alpha1
+  version: v1alpha1
+version: "3"

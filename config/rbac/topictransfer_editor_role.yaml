@@ -1,0 +1,24 @@
+# permissions for end users to edit topictransfers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: topictransfer-editor-role
+rules:
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - topictransfers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - rocketmq.apache.org
+  resources:
+  - topictransfers/status
+  verbs:
+  - get

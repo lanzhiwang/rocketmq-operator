@@ -1,0 +1,6 @@
+apiVersion: rocketmq.apache.org/v1alpha1
+kind: NameService
+metadata:
+  name: nameservice-sample
+spec:
+  # TODO(user): Add fields here
