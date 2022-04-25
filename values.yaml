@@ -1,0 +1,29 @@
+global:
+  registry:
+    address: build-harbor.alauda.cn
+  images:
+    rocketmq_operator:
+      repository: middleware/rocketmq-operator
+      tag: v3.9-7-g8bb65fd
+      thirdparty: true
+      code: https://gitlab-ce.alauda.cn/middleware/rocketmq-operator
+      support_arm: false
+    rocketmq_nameserver:
+      repository: middleware/rocketmq-namesrv
+      tag: v3.9-4-gdee3d77
+      thirdparty: false
+      code: https://gitlab-ce.alauda.cn/middleware/rocketmq-operator
+      support_arm: false
+    rocketmq_broker:
+      repository: middleware/rocketmq-broker
+      tag: v3.9-4-gdee3d77
+      thirdparty: false
+      code: https://gitlab-ce.alauda.cn/middleware/rocketmq-operator
+      support_arm: false
+    rocketmq_console:
+      repository: middleware/rocketmq-dashboard
+      tag: v3.9-4-gdee3d77
+      thirdparty: false
+      code: https://gitlab-ce.alauda.cn/middleware/rocketmq-docker
+      support_arm: false
+
