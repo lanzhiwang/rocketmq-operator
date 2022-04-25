@@ -17,6 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
+	corev1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
@@ -28,14 +29,39 @@ type BrokerSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Broker. Edit broker_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Size int `json:"size"`
+	// NameServers defines the name service list e.g. 192.168.1.1:9876;192.168.1.2:9876
+	NameServers string `json:"nameServers"`
+	// ReplicaPerGroup each broker cluster's replica number
+	ReplicaPerGroup int `json:"replicaPerGroup"`
+	// BaseImage is the broker image to use for the Pods
+	BrokerImage string `json:"brokerImage"`
+	// ImagePullPolicy defines how the image is pulled
+	ImagePullPolicy corev1.PullPolicy `json:"imagePullPolicy"`
+	// AllowRestart defines whether allow pod restart
+	AllowRestart bool `json:"allowRestart"`
+	// Resources describes the compute resource requirements
+	Resources corev1.ResourceRequirements `json:"resources"`
+	// StorageMode can be EmptyDir, HostPath, StorageClass
+	StorageMode string `json:"storageMode"`
+	// HostPath is the local path to store data
+	HostPath string `json:"hostPath,omitempty"`
+	// Env defines custom env, e.g. BROKER_MEM
+	Env []corev1.EnvVar `json:"env"`
+	// Volumes define the broker.conf
+	Volumes []corev1.Volume `json:"volumes"`
+	// VolumeClaimTemplates defines the StorageClass
+	Volume          `json:"volume,omitempty"`
+	// The name of pod where the metadata from
+	ScalePodName string `json:"scalePodName"`
 }
 
 // BrokerStatus defines the observed state of Broker
 type BrokerStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Nodes []string `json:"nodes"`
+	Size  int      `json:"size"`
 }
 
 //+kubebuilder:object:root=true

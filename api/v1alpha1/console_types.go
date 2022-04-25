@@ -28,8 +28,11 @@ type ConsoleSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Console. Edit console_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	Resources         `json:"resources,omitempty"`
+	NumberOfInstances int32  `json:"numberOfInstances"`
+	DockerImage       string `json:"dockerImage,omitempty"`
+	// NameServers defines the name service list e.g. 192.168.1.1:9876;192.168.1.2:9876
+	NameServers string `json:"nameServers"`
 }
 
 // ConsoleStatus defines the observed state of Console

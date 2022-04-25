@@ -28,8 +28,12 @@ type TopicTransferSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of TopicTransfer. Edit topictransfer_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Topic name
+	Topic string `json:"topic,omitempty"`
+	// The cluster where the transferred topic from
+	SourceCluster string `json:"sourceCluster,omitempty"`
+	// The cluster where the topic will be transferred to
+	TargetCluster string `json:"targetCluster,omitempty"`
 }
 
 // TopicTransferStatus defines the observed state of TopicTransfer
