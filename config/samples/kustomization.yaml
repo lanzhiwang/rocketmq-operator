@@ -1,0 +1,4 @@
+resources:
+- rocketmq_v1alpha1_broker.yaml
+- rocketmq_v1alpha1_console.yaml
+- rocketmq_v1alpha1_nameservice.yaml

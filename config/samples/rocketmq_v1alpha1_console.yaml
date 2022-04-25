@@ -1,6 +1,19 @@
 apiVersion: rocketmq.apache.org/v1alpha1
 kind: Console
 metadata:
-  name: console-sample
+  name: console
 spec:
-  # TODO(user): Add fields here
+  # nameServers is the [ip:port] list of name service
+  nameServers: ""
+  # consoleDeployment define the console deployment
+  numberOfInstances: 1
+  # dockerImage: build-harbor.alauda.cn/middleware/rocketmq-dashboard:__console_TAG__
+  resources:
+    limits:
+      cpu: '2'
+      memory: 1000Mi
+    requests:
+      cpu: 500m
+      memory: 500Mi
+
+

@@ -128,3 +128,13 @@ GOBIN=$(PROJECT_DIR)/bin go get $(2) ;\
 rm -rf $$TMP_DIR ;\
 }
 endef
+
+# need to download gitversion in advance
+TOOL_IMAGE ?= build-harbor.alauda.cn/middleware/rocketmq-operator
+GITNAME = $(shell git config --get user.name | sed 's/ //g')
+BUNDLE_VERSION ?= $(shell gitversion /output json /showvariable MajorMinorPatch)-$(shell gitversion /output json /showvariable ShortSha)-$(GITNAME)
+CONTROLLER_VERSION ?= $(BUNDLE_VERSION)
+bundle: ## build bundle
+	cd config/manager && kustomize edit set image controller=${TOOL_IMAGE}:${CONTROLLER_VERSION}
+	kustomize build config/manifests | operator-sdk generate bundle --version ${BUNDLE_VERSION} --channels stable
+	operator-sdk bundle validate ./bundle

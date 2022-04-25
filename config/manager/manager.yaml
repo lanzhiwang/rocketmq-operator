@@ -1,31 +1,32 @@
-apiVersion: v1
-kind: Namespace
-metadata:
-  labels:
-    control-plane: controller-manager
-  name: system
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: controller-manager
   namespace: system
   labels:
-    control-plane: controller-manager
+    app.kubernetes.io/name: rocketmq-operator
+    app.kubernetes.io/component: rocketmq-operator
+    app.kubernetes.io/part-of: rocketmq
 spec:
   selector:
     matchLabels:
-      control-plane: controller-manager
+      app.kubernetes.io/name: rocketmq-operator
   replicas: 1
   template:
     metadata:
       annotations:
         kubectl.kubernetes.io/default-container: manager
       labels:
-        control-plane: controller-manager
+        app.kubernetes.io/name: rocketmq-operator
+        app.kubernetes.io/component: rocketmq-operator
+        app.kubernetes.io/part-of: rocketmq
     spec:
+      serviceAccountName: rocketmq-operator
       securityContext:
         runAsNonRoot: true
+        runAsUser: 1001
+        runAsGroup: 1001
+        fsGroup: 1001
       containers:
       - command:
         - /manager
@@ -51,10 +52,20 @@ spec:
         # More info: https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/
         resources:
           limits:
-            cpu: 500m
-            memory: 128Mi
+            cpu: '1'
+            memory: 1Gi
           requests:
-            cpu: 10m
-            memory: 64Mi
-      serviceAccountName: controller-manager
-      terminationGracePeriodSeconds: 10
+            cpu: '1'
+            memory: 1Gi
+        env:
+        - name: WATCH_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.annotations['olm.targetNamespaces']
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          value: "controller-manager"
+      terminationGracePeriodSeconds: 30
